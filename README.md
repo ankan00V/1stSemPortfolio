@@ -1,2 +1,2 @@
 # 1stSemPortfolio
-a basic portfolio website using html
+a basic portfolio website using basic html understanding
