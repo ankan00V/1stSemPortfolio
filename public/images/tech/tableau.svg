@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>Tableau</title>
+  <g fill="none" stroke-linecap="round" stroke-width="10">
+    <path d="M128 38v42M107 59h42" stroke="#4E79A7"/>
+    <path d="M128 176v42M107 197h42" stroke="#F28E2B"/>
+    <path d="M59 107v42M38 128h42" stroke="#E15759"/>
+    <path d="M197 107v42M176 128h42" stroke="#76B7B2"/>
+    <path d="M79 59v30M64 74h30" stroke="#59A14F"/>
+    <path d="M177 59v30M162 74h30" stroke="#EDC948"/>
+    <path d="M79 167v30M64 182h30" stroke="#B07AA1"/>
+    <path d="M177 167v30M162 182h30" stroke="#FF9DA7"/>
+    <path d="M128 102v52M102 128h52" stroke="#9C755F"/>
+  </g>
+</svg>

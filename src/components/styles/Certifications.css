@@ -1,0 +1,383 @@
+.certifications-section {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto 100px;
+  padding: 20px 0 60px;
+  overflow: hidden;
+}
+
+.certifications-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.certifications-section h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  background: linear-gradient(0deg, #2af7b6, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0 0 16px;
+}
+
+.certifications-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(204, 214, 246, 0.6);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ── Track wrapper with edge fades ── */
+.certifications-carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.certifications-track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden; /* Hide scrollbar but allow JS scrolling */
+}
+
+.certifications-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.certifications-fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--backgroundColor), transparent);
+}
+
+.certifications-fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--backgroundColor), transparent);
+}
+
+/* ── Scrolling track ── */
+.certifications-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  /* Removed CSS animation to allow JS-controlled scrolling */
+}
+
+/* ── Arrows ── */
+.cert-arrow-left {
+  left: 20px;
+}
+
+.cert-arrow-right {
+  right: 20px;
+}
+
+/* ── Certificate card ── */
+.cert-card {
+  flex-shrink: 0;
+  width: 380px;
+  border: 1px solid rgba(42, 247, 182, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    rgba(42, 247, 182, 0.04) 0%,
+    rgba(10, 14, 23, 0.7) 40%,
+    rgba(5, 8, 16, 0.9) 100%
+  );
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(42, 247, 182, 0.25);
+  box-shadow: 0 12px 40px -8px rgba(42, 247, 182, 0.12),
+    0 0 0 1px rgba(42, 247, 182, 0.08);
+}
+
+/* ── Card image area ── */
+.cert-card-image {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: rgba(5, 8, 16, 0.6);
+  overflow: hidden;
+}
+
+.cert-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback when image is missing */
+.cert-card-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(42, 247, 182, 0.06) 0%,
+    rgba(10, 14, 23, 0.8) 100%
+  );
+  z-index: 0;
+}
+
+.cert-card-image img + .cert-card-fallback {
+  z-index: -1;
+}
+
+.cert-card-image img[style*="display: none"] + .cert-card-fallback {
+  z-index: 1;
+}
+
+.cert-card-fallback-issuer {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  opacity: 0.7;
+}
+
+.cert-card-fallback-name {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ccd6f6;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── Card info area ── */
+.cert-card-info {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(42, 247, 182, 0.08);
+}
+
+.cert-card-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 6px;
+  color: #eae5ec;
+  line-height: 1.3;
+}
+
+.cert-card-info span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--accentColor);
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+@media only screen and (max-width: 1400px) {
+  .certifications-section h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+
+  .cert-card {
+    width: 320px;
+  }
+
+  .cert-card-image {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .certifications-section {
+    margin-bottom: 60px;
+  }
+
+  .certifications-fade {
+    width: 60px;
+  }
+
+  .cert-card {
+    width: 280px;
+  }
+
+  .cert-card-image {
+    height: 180px;
+  }
+
+  .certifications-track {
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .certifications-section h2 {
+    font-size: 42px;
+    line-height: 44px;
+  }
+
+  .certifications-subtitle {
+    font-size: 15px;
+  }
+
+  .cert-card {
+    width: 260px;
+  }
+
+  .cert-card-image {
+    height: 160px;
+  }
+
+  .cert-card-info h3 {
+    font-size: 14px;
+  }
+
+  .cert-lightbox {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .cert-lightbox-close {
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* ── Lightbox popup ── */
+.cert-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: lightboxFadeIn 0.25s ease;
+  cursor: pointer;
+}
+
+.cert-lightbox-content {
+  position: relative;
+  max-width: 800px;
+  width: 90%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(42, 247, 182, 0.15);
+  background: rgba(10, 14, 23, 0.95);
+  box-shadow: 0 24px 80px -16px rgba(0, 0, 0, 0.6),
+    0 0 60px -10px rgba(42, 247, 182, 0.08);
+  animation: lightboxScaleIn 0.3s ease;
+  cursor: default;
+}
+
+.cert-lightbox-content img {
+  width: 100%;
+  display: block;
+}
+
+.cert-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: #eae5ec;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  z-index: 1;
+}
+
+.cert-lightbox-close:hover {
+  background: rgba(42, 247, 182, 0.15);
+  border-color: rgba(42, 247, 182, 0.3);
+}
+
+.cert-lightbox-info {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(42, 247, 182, 0.1);
+}
+
+.cert-lightbox-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 6px;
+  color: #eae5ec;
+  line-height: 1.3;
+}
+
+.cert-lightbox-info span {
+  font-size: 18px;
+  color: var(--accentColor);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.cert-verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(42, 247, 182, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(42, 247, 182, 0.2);
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.cert-verify-link svg {
+  transition: transform 0.3s ease;
+}
+
+.cert-verify-link:hover {
+  background: rgba(42, 247, 182, 0.2);
+  border-color: rgba(42, 247, 182, 0.4);
+}
+
+.cert-verify-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightboxScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

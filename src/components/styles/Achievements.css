@@ -1,0 +1,306 @@
+.achievements-section {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto 80px;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.achievements-header {
+  text-align: center;
+  margin-bottom: 70px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.achievements-header h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  background: linear-gradient(0deg, #2af7b6, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+}
+
+.achievements-header h2 span {
+  font-family: "Geist", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  -webkit-text-fill-color: var(--accentColor);
+}
+
+/* ── Accordion Layout ── */
+.achievements-accordion {
+  display: flex;
+  flex-direction: row;
+  height: 360px;
+  width: 100%;
+  gap: 16px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.accordion-card {
+  position: relative;
+  flex: 1; /* Inactive width */
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(42, 247, 182, 0.1);
+  border-top: 2px solid rgba(42, 247, 182, 0.3);
+  background: linear-gradient(
+    165deg,
+    rgba(42, 247, 182, 0.03) 0%,
+    rgba(10, 14, 23, 0.5) 40%,
+    rgba(5, 8, 16, 0.9) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.accordion-card:hover {
+  border-color: rgba(42, 247, 182, 0.3);
+  box-shadow: 0 0 30px rgba(42, 247, 182, 0.05);
+}
+
+.accordion-card.active {
+  flex: 8; /* Active width */
+  background: linear-gradient(
+    165deg,
+    rgba(42, 247, 182, 0.08) 0%,
+    rgba(10, 14, 23, 0.7) 40%,
+    rgba(5, 8, 16, 0.95) 100%
+  );
+  border-color: rgba(42, 247, 182, 0.4);
+}
+
+.accordion-watermark {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.444);
+  transform-origin: center bottom;
+  font-size: 180px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(42, 247, 182, 0.03);
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  font-family: "Geist", sans-serif;
+  transition: color 0.6s ease, transform 0.6s ease, bottom 0.6s ease, left 0.6s ease;
+}
+
+.accordion-card.active .accordion-watermark {
+  color: rgba(42, 247, 182, 0.06);
+  bottom: -20px;
+  left: 95%;
+  transform: translateX(-100%) scale(1);
+}
+
+.accordion-content-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  z-index: 1;
+  width: 100%;
+}
+
+.accordion-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  flex-shrink: 0; /* Prevents the icon from being squished when card is minimized */
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0 auto; /* Center when inactive */
+}
+
+.accordion-card.active .accordion-icon {
+  margin: 0; /* Align left when active */
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-icon img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.accordion-text {
+  position: absolute;
+  left: 90px; /* Right of the icon when active */
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(30px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 300px;
+  visibility: hidden;
+}
+
+.accordion-text.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  transition-delay: 0.2s; /* wait for card to expand before fading in text */
+  visibility: visible;
+}
+
+.accordion-text h3 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.accordion-text p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 500px;
+}
+
+.achievement-verification-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accentColor);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+}
+
+.achievement-verification-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .achievements-accordion {
+    height: 700px;
+    flex-direction: column;
+  }
+  
+  .accordion-card {
+    padding: 20px;
+    min-height: 90px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .accordion-card.active {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .accordion-content-wrapper {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .accordion-card.active .accordion-content-wrapper {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .accordion-icon {
+    position: relative;
+    transform: none;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    margin: 0;
+    flex-shrink: 0;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .accordion-card.active .accordion-icon {
+    position: relative;
+    transform: scale(1.1);
+  }
+  
+  .accordion-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .accordion-text {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    transform: translateY(20px);
+    min-width: 100%;
+    margin-top: 0;
+    width: 100%;
+  }
+  
+  .accordion-text.visible {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements-header h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  .achievements-accordion {
+    height: 750px;
+    padding: 0 20px;
+  }
+  .accordion-card {
+    padding: 20px 24px;
+    min-height: 90px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .accordion-watermark {
+    font-size: 130px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.538);
+  }
+  .accordion-card.active .accordion-watermark {
+    bottom: -15px;
+    left: 95%;
+    transform: translateX(-100%) scale(1);
+  }
+  .accordion-text h3 {
+    font-size: 24px;
+  }
+  .accordion-text p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+}
